@@ -13,16 +13,25 @@
         <title>Actualizado</title>
     </head>
     <body>    
-        <%
-            Ave ave = (Ave) request.getAttribute("unoSolo");
-        %>
-        <h2>El ave actualizado con anilla: <%=ave.getAnilla()%></h2>
-        <p>La especie es: <%=ave.getEspecie()%></p>
-        <p>se encuentra en: <%=ave.getLugar()%></p>
-        <p>en la fecha: <%=ave.getFecha()%></p>
-        <br />   
+        <h1>Actualizar Aves</h1>
+        <% Ave ave = (Ave) request.getAttribute("creado");%>
 
-        <br />
+        <form action="ControladorRUD2" method="post">
+            <label for="anilla">Anilla:</label>&nbsp;&nbsp; 
+            <input type="text"  name="anilla" value="<%=ave.getAnilla()%>" readonly=""/>&nbsp;&nbsp;
+
+            <label for="especie">Especie:</label>&nbsp;&nbsp; 
+            <input type="text"  name="especie" value="<%=ave.getEspecie()%>"/>&nbsp;&nbsp; 
+
+            <label for="lugar">Lugar:</label>&nbsp;&nbsp; 
+            <input type="text"  name="lugar" value="<%=ave.getLugar() %>"/>&nbsp;&nbsp; 
+
+            <label for="fecha">Fecha:</label>&nbsp;&nbsp; 
+            <input type="text"  name="fecha" value="<%=ave.getFecha()%>"/>
+            <br/><br/>
+            <input  type="submit" value="actualizar" name="actualizarFin"/>
+        </form> 
+        <br/><br/>
         <p><a href="<%= request.getContextPath()%>">Volver</a></p>
 
     </body>

@@ -90,24 +90,16 @@ public class ControladorRUD2 extends HttpServlet {
                 }
 
             } else if (request.getParameter("enviar2") != null) { //Si nos llega el boton enviar del formulario del jsp de actualizar accedemos a la sentenica SQL UPDATE
-                if (request.getParameter("eliminar") != null) {
+                if (request.getParameter("anilla") != null) {
+                    
                     anilla = request.getParameter("anilla");
                     especie = request.getParameter("especie");
                     lugar = request.getParameter("lugar");
                     fecha = request.getParameter("fecha");
                     url = "actualizar.jsp";
-                    sql = "update aves set especie=?, lugar=?, fecha=? where anilla=?";
-                    preparada = conexion.prepareStatement(sql);
-                    preparada.setString(1, especie);
-                    preparada.setString(2, lugar);
-                    preparada.setString(3, fecha);
-                    preparada.setString(4, anilla);
-                    
-                    int rowsInserted = preparada.executeUpdate();
-                    if (rowsInserted > 0) {
-                        System.out.println("actualizado");
-                    }
                     sql = "select * from aves where anilla = ?"; 
+                    preparada = conexion.prepareStatement(sql);
+                    preparada.setString(1, especie);          
                     preparada = conexion.prepareStatement(sql); // Esta parte nos servira para tomar los datos introducidos y mostrarlos en el jsp de muestra de datos
                     preparada.setString(1, anilla);
                     resultado = preparada.executeQuery();
@@ -117,13 +109,25 @@ public class ControladorRUD2 extends HttpServlet {
                     ave.setEspecie(resultado.getString("especie"));
                     ave.setLugar(resultado.getString("lugar"));
                     ave.setFecha(resultado.getString("fecha"));
-                    request.setAttribute("unoSolo", ave);
+                    request.setAttribute("creado", ave);
                     request.getRequestDispatcher(url).forward(request, response);
                 } else {
                     url = "error.jsp"; //Este error es por si no seleccionamos ningun ningun registro
                     request.setAttribute("error", "No has seleccionado ningun registro");
                 }
-            } else if (request.getParameter("unaAnilla") != null) { //Esta parte engloba todo el visualizado, si nos llega la opcion una anilla, mostraremos el registro de la anilla seleccionada
+            }else if (request.getParameter("actualizarFin") != null)
+            {
+                url = "actualizarFin.jsp";
+                sql = "update aves set especie=? , lugar=?, fecha=? where anilla=?;";
+                preparada = conexion.prepareStatement(sql);
+                preparada.setString(1, request.getParameter("especie"));
+                preparada.setString(2, request.getParameter("lugar"));
+                preparada.setString(3, request.getParameter("fecha"));
+                preparada.setString(4, request.getParameter("anilla"));
+                preparada.executeUpdate();
+request.getRequestDispatcher(url).forward(request, response);
+            
+            }else if (request.getParameter("unaAnilla") != null) { //Esta parte engloba todo el visualizado, si nos llega la opcion una anilla, mostraremos el registro de la anilla seleccionada
 
                 sql = "select * from aves where anilla = ?";
                 preparada = conexion.prepareStatement(sql);
