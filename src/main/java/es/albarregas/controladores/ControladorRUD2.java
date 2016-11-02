@@ -86,7 +86,7 @@ public class ControladorRUD2 extends HttpServlet {
 
                 int rowsInserted = preparada.executeUpdate(); //Añadimos los cambios
                 if (rowsInserted > 0) {
-                    System.out.println("A new user was inserted successfully!");
+                    System.out.println("delete");
                 }
 
             } else if (request.getParameter("enviar2") != null) { //Si nos llega el boton enviar del formulario del jsp de actualizar accedemos a la sentenica SQL UPDATE
@@ -105,7 +105,7 @@ public class ControladorRUD2 extends HttpServlet {
                     
                     int rowsInserted = preparada.executeUpdate();
                     if (rowsInserted > 0) {
-                        System.out.println("A new user was inserted successfully!");
+                        System.out.println("actualizado");
                     }
                     sql = "select * from aves where anilla = ?"; 
                     preparada = conexion.prepareStatement(sql); // Esta parte nos servira para tomar los datos introducidos y mostrarlos en el jsp de muestra de datos

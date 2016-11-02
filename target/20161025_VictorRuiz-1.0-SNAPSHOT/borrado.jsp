@@ -16,6 +16,7 @@
     </head>
     <body>
         <h2>El ave se ha eliminado correctamente</h2>
+        <input type="submit" name="aceptar" value="Aceptar">
         <p><a href="<%= request.getContextPath()%>">Volver</a></p>
     </body>
 </html>

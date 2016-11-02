@@ -92,7 +92,7 @@ public class ControladorInsert extends HttpServlet {
 
                     int rowsInserted = preparada.executeUpdate(); //Actualizamos los nuevos datos introducidos
                     if (rowsInserted > 0) {
-                        System.out.println("A new user was inserted successfully!");
+                        System.out.println("insertado");
                     }
                     sql = "select * from aves where anilla = ?";
                     preparada = conexion.prepareStatement(sql); // Esta parte nos servira para tomar los datos introducidos y mostrarlos en el jsp de muestra de datos

@@ -25,7 +25,7 @@
     for(Ave pajaro : listado){
     %>
     <tr>
-        <td><input type="radio" name="eliminar" value=""></td>
+        <td><input type="radio" name="eliminar" value="<%=pajaro.getAnilla()%>"></td>
         <td><input type="text" name="anilla" readonly value="<%=pajaro.getAnilla()%>"></td>
         <td><input type="text" name="especie" value="<%=pajaro.getEspecie()%>"></td>
         <td><input type="text" name="lugar" value="<%=pajaro.getLugar()%>"></td>
