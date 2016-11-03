@@ -62,7 +62,8 @@ public class ControladorRUD2 extends HttpServlet {
         Ave ave = null;
         List<Ave> listado = null;
         String url = null;
-        // Creamos las variables 
+        // Creamos las variables
+// LO MISMO DE SIEMPRE CON LA CONEXIÓN
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -75,7 +76,8 @@ public class ControladorRUD2 extends HttpServlet {
         String fecha = request.getParameter("fecha");
         // Damos valores a las variables de las aves
         String sql = null;
-        try { 
+        try {
+// SE PEDIA QUE SE PUDIERAN ELIMINAR VARIOS REGISTROS A LA VEZ
             conexion = ds.getConnection(); //Creamos la conexion
             if (request.getParameter("enviar") != null) { //Si nos llega  el boton enviar del formulario del jsp de borrar accedemos a la sentencia SQL DELETE
 
@@ -91,15 +93,15 @@ public class ControladorRUD2 extends HttpServlet {
 
             } else if (request.getParameter("enviar2") != null) { //Si nos llega el boton enviar del formulario del jsp de actualizar accedemos a la sentenica SQL UPDATE
                 if (request.getParameter("anilla") != null) {
-                    
+
                     anilla = request.getParameter("anilla");
                     especie = request.getParameter("especie");
                     lugar = request.getParameter("lugar");
                     fecha = request.getParameter("fecha");
                     url = "actualizar.jsp";
-                    sql = "select * from aves where anilla = ?"; 
+                    sql = "select * from aves where anilla = ?";
                     preparada = conexion.prepareStatement(sql);
-                    preparada.setString(1, especie);          
+                    preparada.setString(1, especie);
                     preparada = conexion.prepareStatement(sql); // Esta parte nos servira para tomar los datos introducidos y mostrarlos en el jsp de muestra de datos
                     preparada.setString(1, anilla);
                     resultado = preparada.executeQuery();
@@ -126,7 +128,7 @@ public class ControladorRUD2 extends HttpServlet {
                 preparada.setString(4, request.getParameter("anilla"));
                 preparada.executeUpdate();
 request.getRequestDispatcher(url).forward(request, response);
-            
+
             }else if (request.getParameter("unaAnilla") != null) { //Esta parte engloba todo el visualizado, si nos llega la opcion una anilla, mostraremos el registro de la anilla seleccionada
 
                 sql = "select * from aves where anilla = ?";

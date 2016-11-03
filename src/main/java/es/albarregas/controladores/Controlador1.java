@@ -46,6 +46,7 @@ public class Controlador1 extends HttpServlet {
         }
     } // public init. Accedemos a la base de Datos
 
+// COMENTARIOS MUY ESCASOS
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,7 +58,7 @@ public class Controlador1 extends HttpServlet {
             Ave ave = null;
             List<Ave> listado = null;
             String url = null;
-
+// ESTA PARTE ES PARA REALIZAR UNA CONEXIÓN DIRECTA A LA BD Y NO ENTIENDO QUE HACE AQUÍ
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
@@ -79,6 +80,7 @@ public class Controlador1 extends HttpServlet {
                 if (request.getParameter("visualizar") != null) {
                     url = "menuvisualizar.jsp";
                 } //if visualizar
+// REPITES EL MISMO CÓDIGO PARA ACTUALIZAR Y BORRAR LO ÚNICO QUE CAMBIA ES LA URL
                 if (request.getParameter("actualizar") != null) {
                     url = "actualizado.jsp";
                     sentencia = conexion.createStatement();

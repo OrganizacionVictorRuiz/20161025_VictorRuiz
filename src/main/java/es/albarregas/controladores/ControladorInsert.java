@@ -60,6 +60,7 @@ public class ControladorInsert extends HttpServlet {
         Ave ave = null;
         String url = null;
         // Declaramos una serie de variables que tendremos que usar para nuestras sentencias SQL
+// VUELVES A PONER LAS SENTENCIAS DE CONEXIÓN DIRECTA PERO LUEGO USAS EL POOL
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
@@ -94,6 +95,7 @@ public class ControladorInsert extends HttpServlet {
                     if (rowsInserted > 0) {
                         System.out.println("insertado");
                     }
+// NO HACE FALTA LEER DE LA BD LA INFORMACIÓN LA TIENES EN LOS PARÁMETROS
                     sql = "select * from aves where anilla = ?";
                     preparada = conexion.prepareStatement(sql); // Esta parte nos servira para tomar los datos introducidos y mostrarlos en el jsp de muestra de datos
                     preparada.setString(1, anilla);

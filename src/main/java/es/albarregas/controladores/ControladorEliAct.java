@@ -29,6 +29,7 @@ public class ControladorEliAct extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+// QUÉ SENTIDO TIENE ESTE CONTROLADOR QUE ADEMÁS TIENE UN ROLL DE VISTA
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,7 +38,7 @@ public class ControladorEliAct extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorEliAct</title>");            
+            out.println("<title>Servlet ControladorEliAct</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ControladorEliAct at " + request.getContextPath() + "</h1>");

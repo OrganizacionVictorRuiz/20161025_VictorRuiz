@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : insertar
     Created on : 28-oct-2016, 17:28:50
     Author     : Zack
@@ -16,13 +16,14 @@
     </head>
     <body>
         <h2>Listado de todas las aves de la base de datos</h2>
-        <form method="post" action="ControladorRUD2">    
+        <form method="post" action="ControladorRUD2">
             <table>
                 <%
                     List<Ave> listado = null;
                     listado = new ArrayList();
                     listado = (ArrayList<Ave>) request.getAttribute("lista");
                     for (Ave pajaro : listado) {
+// TE FALTAN LOS CHECKBOX EN CADA REGISTRO
                 %>
                 <tr>
                     <td><%=pajaro.getAnilla()%></td>
